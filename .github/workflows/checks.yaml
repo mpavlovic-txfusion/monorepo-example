@@ -23,3 +23,9 @@ jobs:
       run: | # Custom action
         npm set @mpavlovic-txfusion:registry=https://npm.pkg.github.com/mpavlovic-txfusion
         npm set "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}"
+
+
+    - name: Install dependencies
+      run: | # Install and link dependencies
+        npm ci
+        npx lerna bootstrap
