@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/mpavlovic-txfusion/monorepo-example/compare/@mpavlovic-txfusion/date-logic@2.0.0...@mpavlovic-txfusion/date-logic@2.1.0) (2023-03-07)
+
+
+### Features
+
+* **date-logic:** shorter day and month ([60dac3e](https://github.com/mpavlovic-txfusion/monorepo-example/commit/60dac3e2c223ae0bd0c5f8b1ecd132f9ba7d8c24))
+
+
+
+
+
 # 2.0.0 (2023-03-07)
 
 
