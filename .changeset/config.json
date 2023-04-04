@@ -6,6 +6,14 @@
   "linked": [],
   "access": "restricted",
   "baseBranch": "main",
-  "updateInternalDependencies": "patch",
-  "ignore": []
+  "updateInternalDependencies": "minor",
+  "ignore": [],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+      "type": "git",
+      "url": "ssh://git@github.com:mpavlovic-txfusion/monorepo-example.git",
+      "directory": "packages"
+  }
 }
