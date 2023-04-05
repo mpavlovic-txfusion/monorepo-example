@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.2.1
+
+### Patch Changes
+
+- c9cb795: Default local changed to en-UK
+- 1aabaef: Shorten date format
+
 ## 2.1.1
 
 ### Patch Changes
@@ -11,14 +18,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [2.2.0](https://github.com/mpavlovic-txfusion/monorepo-example/compare/@mpavlovic-txfusion/date-logic@2.1.0...@mpavlovic-txfusion/date-logic@2.2.0) (2023-03-07)
 
-
 ### Features
 
-* **date-logic:** echo tests ([8ec24c9](https://github.com/mpavlovic-txfusion/monorepo-example/commit/8ec24c90732732df26a0ffc5cd55a6e4bc7a772c))
-
-
-
-
+- **date-logic:** echo tests ([8ec24c9](https://github.com/mpavlovic-txfusion/monorepo-example/commit/8ec24c90732732df26a0ffc5cd55a6e4bc7a772c))
 
 # [2.1.0](https://github.com/mpavlovic-txfusion/monorepo-example/compare/@mpavlovic-txfusion/date-logic@2.0.0...@mpavlovic-txfusion/date-logic@2.1.0) (2023-03-07)
 
