@@ -1,6 +1,6 @@
 {
   "name": "@mpavlovic-txfusion/date-logic",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "A package that returns the current date",
   "main": "index.js",
   "scripts": {
