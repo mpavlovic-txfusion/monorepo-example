@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.2
+
+### Patch Changes
+
+- 5666813: Long month format
+
 ## 2.2.1
 
 ### Patch Changes
