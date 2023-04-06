@@ -41,5 +41,5 @@ jobs:
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@mpavlovic-txfusion.com"
           git push --follow-tags
-          npx ts-node --files scripts/create-release-from-tags/run.ts
+          node scripts/create-release-from-tags/run.js
 

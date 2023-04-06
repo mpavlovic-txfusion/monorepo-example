@@ -2,25 +2,14 @@ import spawn from '@npmcli/promise-spawn';
 import getPackages from 'get-monorepo-packages';
 import path from 'path';
 import fs from 'fs';
-import { exists } from '../utils/exists';
-
-export type Config = {
-  isDryRun: boolean
-  tags: Tag[]
-};
-
-export type Tag = {
-  name: string
-  versionNumber: string
-  raw: string
-};
+import { exists } from '../utils/exists.js';
 
 /**
  *
  * @returns list of tags
  * @example ["@mpavlovic-txfusion/date-logic@2.2.2", "@mpavlovic-txfusion/date-logic@2.2.2"]
  */
-export const getCurrentGitTags = async (): Promise<Tag[]> => {
+export const getCurrentGitTags = async () => {
   const { stdout, stderr, code } = await spawn('git', [
     'tag',
     '--points-at',
@@ -37,7 +26,7 @@ export const getCurrentGitTags = async (): Promise<Tag[]> => {
 export const getConfig = async ({
   DRY_RUN,
   TAGS,
-}: NodeJS.ProcessEnv): Promise<Config> => {
+}) => {
   const isDryRun = Boolean(DRY_RUN);
   const tags = TAGS ? parseRawTags(TAGS) : await getCurrentGitTags();
 
@@ -50,7 +39,7 @@ export const getConfig = async ({
   };
 }
 
-const getChangelogPath = (packageName: string): string | undefined => {
+const getChangelogPath = (packageName)=> {
   const result = getPackages('.').find((p) =>
     p.package.name.includes(packageName)
   );
@@ -79,10 +68,7 @@ const getChangelogPath = (packageName: string): string | undefined => {
  * @returns list of tags
  * @example ["@mpavlovic-txfusion/date-logic@2.2.2", "@mpavlovic-txfusion/date-logic@2.2.2"]
  */
-const createGithubRelease = async (
-  tag: string,
-  releaseNotes?: string
-): Promise<void> => {
+const createGithubRelease = async (tag, releaseNotes) => {
   const { stderr, code } = await spawn('gh', [
     'release',
     'create',
@@ -101,12 +87,12 @@ const createGithubRelease = async (
  *
  * @param rawTag - ex. "@segment/analytics-foo@1.99.0"
  */
-const extractPartsFromTag = (rawTag: string): Tag | undefined => {
+const extractPartsFromTag = (rawTag)=> {
   const [name, version] = rawTag.split(/@(\d.*)/)
   if (!name || !version) return undefined
   return {
     name,
-    versionNumber: version?.replace('\n', '') as string,
+    versionNumber: version?.replace('\n', ''),
     raw: rawTag,
   }
 }
@@ -115,7 +101,7 @@ const extractPartsFromTag = (rawTag: string): Tag | undefined => {
  *
  * @param rawTags - string delimited list of tags (e.g. `@mpavlovic-txfusion/date-logic@2.2.2 @mpavlovic-txfusion/date-renderer@1.2.0`)
  */
-export const parseRawTags = (rawTags: string): Tag[] => {
+export const parseRawTags = (rawTags) => {
   return rawTags.trim().split(' ').map(extractPartsFromTag).filter(exists);
 }
 
@@ -124,12 +110,12 @@ export const parseRawTags = (rawTags: string): Tag[] => {
  * @returns the release notes that correspond to a given tag.
  */
 export const parseReleaseNotes = (
-  changelogText: string,
-  versionNumber: string
-): string => {
+  changelogText,
+  versionNumber
+) => {
   const h2tag = /(##\s.*\d.*)/gi;
-  let begin: number;
-  let end: number;
+  let begin;
+  let end;
 
   changelogText.split('\n').forEach((line, idx) => {
     if (begin && end) return;
@@ -146,7 +132,7 @@ export const parseReleaseNotes = (
   return result.join('\n');
 }
 
-const getReleaseNotes = (tag: Tag): string | undefined => {
+const getReleaseNotes = (tag) => {
   const { name, versionNumber } = tag;
   const changelogPath = getChangelogPath(name);
   if (!changelogPath) {
@@ -164,9 +150,9 @@ const getReleaseNotes = (tag: Tag): string | undefined => {
 }
 
 const createGithubReleaseFromTag = async (
-  tag: Tag,
+  tag,
   { dryRun = false } = {}
-): Promise<void> => {
+) => {
   const notes = getReleaseNotes(tag)
   if (notes) {
     console.log(
@@ -183,7 +169,7 @@ const createGithubReleaseFromTag = async (
   return undefined
 }
 
-export const createReleaseFromTags = async (config: Config) => {
+export const createReleaseFromTags = async (config) => {
   console.log('Processing tags:', config.tags, '\n');
 
   for (const tag of config.tags) {

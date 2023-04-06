@@ -7,6 +7,7 @@
     "bump-versions": "lerna version --conventional-commits",
     "publish": "lerna publish from-git"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mpavlovic-txfusion/monorepo-example.git"
