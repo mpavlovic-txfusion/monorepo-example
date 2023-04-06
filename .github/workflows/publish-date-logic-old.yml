@@ -1,9 +1,17 @@
-name: Publish date-logic
+name: Publish date-logic package
 
 on:
-  push:
-    tags:
-      - '@mpavlovic-txfusion/date-logic@*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        required: true
+        type: choice
+        description: package tag
+        default: latest
+        options: 
+          - latest
+          - next
+          - beta
 
 jobs:
   publish:
@@ -23,8 +31,15 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Publish
-        run: npm publish @mpavlovic-txfusion/date-logic --workspace=packages/date-logic --access=private
+      # - name: Publish
+      #   run: npm publish @mpavlovic-txfusion/date-logic --tag ${{ inputs.tag }} --workspace=packages/date-logic --access=private
+
+      - name: Create Git Tag
+        run: |
+          git config --global user.name "mpavlovic-txfusion"
+          git config --global user.email "mirosav@txfusion.io"
+          npx changeset tag
+          git push --follow-tags
 
       - name: Create Github Release From Tags
         env:

@@ -1,9 +1,9 @@
-name: Publish date-logic
+name: Publish date-renderer
 
 on:
   push:
     tags:
-      - '@mpavlovic-txfusion/date-logic@*'
+      - '@mpavlovic-txfusion/date-renderer@*'
 
 jobs:
   publish:
@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Publish
-        run: npm publish @mpavlovic-txfusion/date-logic --workspace=packages/date-logic --access=private
+        run: npm publish @mpavlovic-txfusion/date-renderer --workspace=packages/date-renderer --access=private
 
       - name: Create Github Release From Tags
         env:
