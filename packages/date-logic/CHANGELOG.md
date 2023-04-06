@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.7
+
+### Patch Changes
+
+- b17f2ac: Shorter date format
+
 ## 2.2.6
 
 ### Patch Changes

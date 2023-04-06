@@ -1,5 +1,12 @@
 # Change Log
 
+## 1.2.2
+
+### Patch Changes
+
+- b17f2ac: Remove colon
+- c2ddf5c: Change text
+
 ## 1.2.1
 
 ### Patch Changes
