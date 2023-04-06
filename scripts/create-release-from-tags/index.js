@@ -161,12 +161,11 @@ const createGithubReleaseFromTag = async (
   }
 
   if (dryRun) {
-    console.log(`--> Dry run: ${tag.raw} not released.`)
-    return undefined
+    console.log(`--> Dry run: ${tag.raw} not released.`);
+    return;
   }
 
-  await createGithubRelease(tag.raw, notes)
-  return undefined
+  await createGithubRelease(tag.raw, notes);
 }
 
 export const createReleaseFromTags = async (config) => {
