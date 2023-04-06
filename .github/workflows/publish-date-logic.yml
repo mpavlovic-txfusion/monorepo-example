@@ -31,14 +31,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Publish
-        run: npm publish @mpavlovic-txfusion/date-logic --tag ${{ inputs.tag }} --workspace=packages/date-logic --access=private
+      # - name: Publish
+      #   run: npm publish @mpavlovic-txfusion/date-logic --tag ${{ inputs.tag }} --workspace=packages/date-logic --access=private
 
       - name: Create Git Tag
         run: |
           git config --global user.name "mpavlovic-txfusion"
           git config --global user.email "mirosav@txfusion.io"
-          git tag @mpavlovic-txfusion/date-logic@2.2.5 -m "@mpavlovic-txfusion/date-logic@2.2.5"
+          # npx changeset tag
 
       - name: Create Github Release From Tags
         env:
