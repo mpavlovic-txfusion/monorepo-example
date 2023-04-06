@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.5
+
+### Patch Changes
+
+- cb3eb3e: Short weekday
+
 ## 2.2.4
 
 ### Patch Changes
