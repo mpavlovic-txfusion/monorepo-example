@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.3
+
+### Patch Changes
+
+- 1f83a47: Short month format
+
 ## 2.2.2
 
 ### Patch Changes
