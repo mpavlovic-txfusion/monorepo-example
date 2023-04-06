@@ -31,8 +31,11 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      # - name: Publish
-      #   run: npx changeset publish --tag ${{ inputs.tag }}
+      - name: Publish
+        run: npx changeset publish --tag ${{ inputs.tag }}
+
+      - name: Create Git Tag
+        run: npx changeset tag
 
       - name: Create Github Release From Tags
         env:
@@ -40,6 +43,5 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@mpavlovic-txfusion.com"
-          git push --follow-tags
           node scripts/create-release-from-tags/run.js
 
