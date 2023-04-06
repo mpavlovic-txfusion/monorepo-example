@@ -32,5 +32,6 @@ jobs:
         run: npm ci
 
       - name: Publish
-        run: npm publish @mpavlovic-txfusion/date-logic --tag ${{ inputs.tag }} --workspace=packages/date-logic --access=private
+        # run: npm publish @mpavlovic-txfusion/date-logic --tag ${{ inputs.tag }} --workspace=packages/date-logic --access=private
+        run: npm changeset publish --tag ${{ inputs.tag }}
 
