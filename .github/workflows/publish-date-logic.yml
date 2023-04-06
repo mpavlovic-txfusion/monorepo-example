@@ -38,7 +38,7 @@ jobs:
         run: |
           git config --global user.name "mpavlovic-txfusion"
           git config --global user.email "mirosav@txfusion.io"
-          # npx changeset tag
+          npx changeset tag
 
       - name: Create Github Release From Tags
         env:
