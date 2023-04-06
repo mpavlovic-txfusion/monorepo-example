@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.6
+
+### Patch Changes
+
+- 2d3be6f: Date format changed.
+
 ## 2.2.5
 
 ### Patch Changes
