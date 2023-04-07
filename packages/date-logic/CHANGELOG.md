@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.9
+
+### Patch Changes
+
+- 598391b: Date update
+
 ## 2.2.8
 
 ### Patch Changes
