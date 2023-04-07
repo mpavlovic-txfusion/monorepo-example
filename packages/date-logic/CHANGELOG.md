@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.8
+
+### Patch Changes
+
+- 79ce5f5: Date format change
+
 ## 2.2.7
 
 ### Patch Changes
