@@ -106,6 +106,13 @@ export const parseRawTags = (rawTags) => {
 }
 
 /**
+ * Type guard for removing nullish values.
+ */
+export const exists = (value) => {
+  return value != null && value !== undefined;
+};
+
+/**
  *
  * @returns the release notes that correspond to a given tag.
  */
