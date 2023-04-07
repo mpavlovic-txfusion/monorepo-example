@@ -8,7 +8,7 @@ import fs from 'fs';
  * @returns list of tags
  * @example ["@mpavlovic-txfusion/date-logic@2.2.2", "@mpavlovic-txfusion/date-logic@2.2.2"]
  */
-export const getCurrentGitTags = async () => {
+const getCurrentGitTags = async () => {
   const { stdout, stderr, code } = await spawn('git', [
     'tag',
     '--points-at',
@@ -22,7 +22,7 @@ export const getCurrentGitTags = async () => {
   return parseRawTags(stdout.toString())
 }
 
-export const getConfig = async ({
+const getConfig = async ({
   DRY_RUN,
   TAGS,
 }) => {
@@ -100,14 +100,14 @@ const extractPartsFromTag = (rawTag)=> {
  *
  * @param rawTags - string delimited list of tags (e.g. `@mpavlovic-txfusion/date-logic@2.2.2 @mpavlovic-txfusion/date-renderer@1.2.0`)
  */
-export const parseRawTags = (rawTags) => {
+const parseRawTags = (rawTags) => {
   return rawTags.trim().split(' ').map(extractPartsFromTag).filter(exists);
 }
 
 /**
  * Type guard for removing nullish values.
  */
-export const exists = (value) => {
+const exists = (value) => {
   return value != null && value !== undefined;
 };
 
@@ -115,7 +115,7 @@ export const exists = (value) => {
  *
  * @returns the release notes that correspond to a given tag.
  */
-export const parseReleaseNotes = (
+const parseReleaseNotes = (
   changelogText,
   versionNumber
 ) => {
@@ -174,10 +174,22 @@ const createGithubReleaseFromTag = async (
   await createGithubRelease(tag.raw, notes);
 }
 
-export const createReleaseFromTags = async (config) => {
+const createReleaseFromTags = async (config) => {
   console.log('Processing tags:', config.tags, '\n');
 
   for (const tag of config.tags) {
     await createGithubReleaseFromTag(tag, { dryRun: config.isDryRun });
   }
 }
+
+async function run() {
+  const config = await getConfig(process.env)
+  return createReleaseFromTags(config)
+}
+
+run()
+    .then(() => process.exit(0))
+    .catch((err) => {
+        console.error('Error:', err);
+        process.exit(1);
+    });
