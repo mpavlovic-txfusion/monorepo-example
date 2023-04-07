@@ -2,7 +2,6 @@ import spawn from '@npmcli/promise-spawn';
 import getPackages from 'get-monorepo-packages';
 import path from 'path';
 import fs from 'fs';
-import { exists } from '../utils/exists.js';
 
 /**
  *
