@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.4.1
+
+### Patch Changes
+
+- 6fdd34b: Date format changed to londer weekday and month representation with the colon.
+
 ## 2.4.0
 
 ### Minor Changes
