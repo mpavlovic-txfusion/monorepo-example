@@ -31,6 +31,6 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "mpavlovic-txfusion"
-          git config --global user.email "mirosav@txfusion.io"
+          git config --global user.email "miroslav@txfusion.io"
           node scripts/create-release-from-tags.js --package=date-renderer
 

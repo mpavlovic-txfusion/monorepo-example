@@ -186,6 +186,8 @@ async function main() {
       const tags = await getCurrentGitTagsForPackage(cmd.package);
       return createReleaseFromTags(tags);
     });
+
+    await program.parseAsync(process.argv);
 }
 
 main()
