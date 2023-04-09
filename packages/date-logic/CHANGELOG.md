@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.4.0
+
+### Minor Changes
+
+- f9ded67: Date format changed.
+
 ## 2.3.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.2.9
+
+### Patch Changes
+
+- f9ded67: Date format changed.
+- Updated dependencies [f9ded67]
+  - @mpavlovic-txfusion/date-logic@2.4.0
+
 ## 1.2.3
 
 ### Patch Changes
