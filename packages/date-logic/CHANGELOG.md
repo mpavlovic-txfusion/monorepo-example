@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.3.0
+
+### Minor Changes
+
+- 22891a9: Date representation change
+
 ## 2.2.9
 
 ### Patch Changes

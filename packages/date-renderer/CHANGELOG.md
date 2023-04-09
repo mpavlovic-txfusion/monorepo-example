@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.2.3
+
+### Patch Changes
+
+- 22891a9: Date representation change
+- Updated dependencies [22891a9]
+  - @mpavlovic-txfusion/date-logic@2.3.0
+
 ## 1.2.2
 
 ### Patch Changes
