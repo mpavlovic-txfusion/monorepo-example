@@ -32,5 +32,5 @@ jobs:
         run: |
           git config --global user.name "mpavlovic-txfusion"
           git config --global user.email "mirosav@txfusion.io"
-          node scripts/create-release-from-tags.js --package date-logic
+          node scripts/create-release-from-tags.js --package=date-logic
 

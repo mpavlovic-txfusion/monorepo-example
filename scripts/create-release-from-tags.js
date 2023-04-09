@@ -132,7 +132,7 @@ const parseReleaseNotes = (
   const result = changelogText.split('\n').filter((_, idx) => {
     return idx >= begin && idx <= (end ?? Infinity);
   });
-  
+
   return result.join('\n');
 };
 
@@ -177,13 +177,15 @@ async function main() {
 
   program
     .name('create-github-release-from-tags')
-    .option('-p, --package', 'Package name to create release for');
-
-  // TODO: Remove this
-  console.log('PACKAGE NAME: ', program.opts().package);
-
-  const tags = await getCurrentGitTagsForPackage(program.opts().package);
-  return createReleaseFromTags(tags);
+    .option('-p, --package', 'Package name to create release for')
+    .action(async (cmd) => {
+      // TODO: Remove this
+      console.log('CMD: ', cmd);
+      console.log('PACKAGE NAME: ', cmd.package);
+    
+      const tags = await getCurrentGitTagsForPackage(cmd.package);
+      return createReleaseFromTags(tags);
+    });
 }
 
 main()
