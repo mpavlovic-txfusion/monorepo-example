@@ -26,6 +26,7 @@
   ],
   "devDependencies": {
     "@npmcli/promise-spawn": "^6.0.2",
+    "commander": "^10.0.0",
     "get-monorepo-packages": "^1.2.0"
   }
 }
