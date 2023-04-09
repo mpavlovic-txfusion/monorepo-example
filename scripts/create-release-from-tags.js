@@ -177,7 +177,7 @@ async function main() {
 
   program
     .name('create-github-release-from-tags')
-    .option('-p, --package', 'Package name to create release for')
+    .option('-p, --package <package>', 'Package name to create release for')
     .action(async (cmd) => {
       // TODO: Remove this
       console.log('CMD: ', cmd);
