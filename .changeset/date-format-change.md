@@ -3,4 +3,4 @@
 "@mpavlovic-txfusion/date-renderer": patch
 ---
 
-Date format changed to londeg weekdat and monnth representation with the colon.
+Date format changed to londer weekday and month representation with the colon.
