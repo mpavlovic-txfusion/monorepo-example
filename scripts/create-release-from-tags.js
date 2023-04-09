@@ -143,6 +143,7 @@ const getReleaseNotes = (tag) => {
     console.log(`no changelog path for ${name}... skipping.`);
     return;
   }
+  
   const changelogText = fs.readFileSync(changelogPath, { encoding: 'utf8' });
   const releaseNotes = parseReleaseNotes(changelogText, versionNumber);
   if (!releaseNotes) {
@@ -150,6 +151,7 @@ const getReleaseNotes = (tag) => {
       `Could not find release notes for tags ${tag.raw} in ${changelogPath}.`
     );
   };
+
   return releaseNotes;
 };
 
@@ -179,10 +181,6 @@ async function main() {
     .name('create-github-release-from-tags')
     .option('-p, --package <package>', 'Package name to create release for')
     .action(async (cmd) => {
-      // TODO: Remove this
-      console.log('CMD: ', cmd);
-      console.log('PACKAGE NAME: ', cmd.package);
-    
       const tags = await getCurrentGitTagsForPackage(cmd.package);
       return createReleaseFromTags(tags);
     });
