@@ -25,10 +25,9 @@ jobs:
 
       - name: Get Branch
         run: |
-          tag_commit=$(git rev-list -n 1 ${{ github.ref }})
-          echo $tag_commit
-          branch_name=$(git branch -r --contains $tag_commit | grep -v HEAD | awk '{print $1}' | sed -e "s#^origin/##")
-          echo $(git branch -r)
+          tag_name=$(echo ${{ github.ref }} | sed -e "s#^refs/tags/##")
+          echo $tag_name
+          branch_name=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" "https://api.github.com/repos/${{ github.repository }}/git/refs/tags/$tag_name" | jq -r '.object.url' | xargs curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" | jq -r '.object.sha as $sha | ["refs/heads/*"] | map(select(. | test($sha))) | map(sub("^refs/heads/"; "")) | .[0]')
           echo "Branch name for tag ${{ github.ref }} is $branch_name"
 
           # echo $GITHUB_REF
