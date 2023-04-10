@@ -48,9 +48,8 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ${{ env.GH_TOKEN }}
-          
-          git config --global user.name "mpavlovic-txfusion"
-          git config --global user.email "miroslav@txfusion.io"
+          raw=$(git branch -r --contains ${GITHUB_REF#refs/})
+          echo $raw
           if [[ ${{ github.ref }} != *"beta"* ]]; then
             if [[ $(echo ${{ env.GITHUB_REF }} | cut -d'/' -f3) == "main" ]]; then
               node scripts/create-release-from-tags.js --package date-logic
