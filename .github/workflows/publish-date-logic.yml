@@ -39,6 +39,7 @@ jobs:
         run: |
           git config --global user.name "mpavlovic-txfusion"
           git config --global user.email "miroslav@txfusion.io"
+          echo ${{ env.GITHUB_REF }}
           if [[ ${{ github.ref }} != *"beta"* ]]; then
             echo "Not beta"
             if [[ $(echo ${{ env.GITHUB_REF }} | cut -d'/' -f3) == "main" ]]; then
@@ -49,4 +50,5 @@ jobs:
             echo ${{ github.ref }}
             echo ${{ env.GITHUB_REF }}
           fi
+          echo "Beta"
 
