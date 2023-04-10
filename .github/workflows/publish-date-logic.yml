@@ -45,7 +45,7 @@ jobs:
         run: |
           git config --global user.name "mpavlovic-txfusion"
           git config --global user.email "miroslav@txfusion.io"
-          echo "Branch name is ${env.BRANCH}"
+          echo ${{ env.BRANCH }}
           if [[ ${{ github.ref }} != *"beta"* ]]; then
             node scripts/create-release-from-tags.js --package date-logic
           else
