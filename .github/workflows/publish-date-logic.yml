@@ -23,6 +23,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Get Branch
+        run: |
+          echo git branch -r --contains ${{ github.ref#refs/ }}
+          raw=$(git branch -r --contains ${{ github.ref }})
+          branch=${raw##*/}
+          echo $branch
+          echo "BRANCH=$branch" >> $GITHUB_ENV
+
       # - name: Publish
       #   run: |
       #     if [[ ${{ github.ref }} == *"beta"* ]]; then
@@ -38,6 +46,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo ${{ env.GH_TOKEN }}
+          
           git config --global user.name "mpavlovic-txfusion"
           git config --global user.email "miroslav@txfusion.io"
           if [[ ${{ github.ref }} != *"beta"* ]]; then
