@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.4.5
+
+### Patch Changes
+
+- c040dae: Change locale
+
 ## 2.4.2
 
 ### Patch Changes
