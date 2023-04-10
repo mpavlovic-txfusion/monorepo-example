@@ -24,13 +24,22 @@ jobs:
         run: npm ci
 
       - name: Publish
-        run: npm publish @mpavlovic-txfusion/date-renderer --workspace=packages/date-renderer --access=private
+        run: |
+          if [[ ${{ github.ref }} == *"beta"* ]]; then
+            echo "Publishing package with beta tag"
+            npm publish @mpavlovic-txfusion/date-renderer --tag beta --workspace=packages/date-renderer --access=private
+          else
+            echo "Publishing package with latest tag"
+            npm publish @mpavlovic-txfusion/date-renderer --tag latest --workspace=packages/date-renderer --access=private
+          fi 
 
       - name: Create Github Release From Tags
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "mpavlovic-txfusion"
-          git config --global user.email "miroslav@txfusion.io"
-          node scripts/create-release-from-tags.js --package date-renderer
+          if [[ ${{ github.ref }} != *"beta"* ]]; then
+            node scripts/create-release-from-tags.js --package date-renderer
+          else
+            echo "Skipping github release creation for beta tag"
+          fi
 
