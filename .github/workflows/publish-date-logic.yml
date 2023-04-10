@@ -28,7 +28,7 @@ jobs:
           tag_commit=$(git rev-list -n 1 ${{ github.ref }})
           echo $tag_commit
           branch_name=$(git branch -r --contains $tag_commit | grep -v HEAD | awk '{print $1}' | sed -e "s#^origin/##")
-          echo $branch_name
+          echo $(git branch -r)
           echo "Branch name for tag ${{ github.ref }} is $branch_name"
 
           # echo $GITHUB_REF
