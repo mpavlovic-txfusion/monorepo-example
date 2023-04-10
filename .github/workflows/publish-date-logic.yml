@@ -27,8 +27,8 @@ jobs:
         run: |
           echo $GITHUB_REF
           echo ${GITHUB_REF#refs/}
-          echo git branch -r --contains ${GITHUB_REF#refs/}
           raw=$(git branch -r --contains ${GITHUB_REF#refs/})
+          echo $raw
           branch=${raw##*/}
           echo $branch
           echo "BRANCH=$branch" >> $GITHUB_ENV
