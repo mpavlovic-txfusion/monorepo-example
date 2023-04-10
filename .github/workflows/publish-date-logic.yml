@@ -51,11 +51,10 @@ jobs:
 
       - name: Create Github Release From Tags
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo ${{ env.GH_TOKEN }}
-          raw=$(git branch -r --contains ${GITHUB_REF#refs/})
-          echo $raw
+          echo ${{ env.GITHUB_TOKEN }}
+          echo $(git branch --show-current)
           if [[ ${{ github.ref }} != *"beta"* ]]; then
             if [[ $(echo ${{ env.GITHUB_REF }} | cut -d'/' -f3) == "main" ]]; then
               node scripts/create-release-from-tags.js --package date-logic
