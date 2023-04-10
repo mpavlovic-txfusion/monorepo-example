@@ -23,15 +23,15 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Publish
-        run: |
-          if [[ ${{ github.ref }} == *"beta"* ]]; then
-            echo "Publishing package with beta tag"
-            npm publish @mpavlovic-txfusion/date-logic --tag beta --workspace=packages/date-logic --access=private
-          else
-            echo "Publishing package with latest tag"
-            npm publish @mpavlovic-txfusion/date-logic --tag latest --workspace=packages/date-logic --access=private
-          fi 
+      # - name: Publish
+      #   run: |
+      #     if [[ ${{ github.ref }} == *"beta"* ]]; then
+      #       echo "Publishing package with beta tag"
+      #       npm publish @mpavlovic-txfusion/date-logic --tag beta --workspace=packages/date-logic --access=private
+      #     else
+      #       echo "Publishing package with latest tag"
+      #       npm publish @mpavlovic-txfusion/date-logic --tag latest --workspace=packages/date-logic --access=private
+      #     fi 
 
       - name: Create Github Release From Tags
         env:
