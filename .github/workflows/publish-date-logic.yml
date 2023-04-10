@@ -40,13 +40,13 @@ jobs:
           git config --global user.name "mpavlovic-txfusion"
           git config --global user.email "miroslav@txfusion.io"
           if [[ ${{ github.ref }} != *"beta"* ]]; then
+            echo "Not beta"
             if [[ $(echo ${{ env.GITHUB_REF }} | cut -d'/' -f3) == "main" ]]; then
               node scripts/create-release-from-tags.js --package date-logic
             else
               echo "Branch is not main"
             fi
             echo ${{ github.ref }}
-            echo ${{ github.ref != *"beta"* }}
             echo ${{ env.GITHUB_REF }}
           fi
 
