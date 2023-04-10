@@ -25,13 +25,19 @@ jobs:
 
       - name: Get Branch
         run: |
-          echo $GITHUB_REF
-          echo ${GITHUB_REF#refs/}
-          raw=$(git branch -r --contains ${GITHUB_REF#refs/})
-          echo $raw
-          branch=${raw##*/}
-          echo $branch
-          echo "BRANCH=$branch" >> $GITHUB_ENV
+          tag_commit=$(git rev-list -n 1 ${{ github.ref }})
+          echo $tag_commit
+          branch_name=$(git branch -r --contains $tag_commit | grep -v HEAD | awk '{print $1}' | sed -e "s#^origin/##")
+          echo $branch_name
+          echo "Branch name for tag ${{ github.ref }} is $branch_name"
+
+          # echo $GITHUB_REF
+          # echo ${GITHUB_REF#refs/}
+          # raw=$(git branch -r --contains ${GITHUB_REF#refs/})
+          # echo $raw
+          # branch=${raw##*/}
+          # echo $branch
+          # echo "BRANCH=$branch" >> $GITHUB_ENV
 
       # - name: Publish
       #   run: |
