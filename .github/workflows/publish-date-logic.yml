@@ -36,7 +36,7 @@ jobs:
       - name: Get Branch
         run: |
           raw=$(git branch --contains ${{ github.ref }})
-          branch=$("$raw" | awk '{print $NF}')
+          branch=$(echo "$raw" | awk '{print $NF}')
           echo "BRANCH=$branch" >> $GITHUB_ENV
 
       - name: Create Github Release From Tags
